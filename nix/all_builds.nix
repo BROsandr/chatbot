@@ -1,16 +1,18 @@
 { sources ? import ./sources.nix }: let
   pkgs = import sources.nixpkgs { config = {}; overlays = []; };
 
-  free-proxy = pkgs.callPackage ./python/free-proxy.nix {};
+  pyEnv = let
+    free-proxy = pkgs.callPackage ./python/free-proxy.nix {};
+  in pkgs.python3.withPackages (ps: [ free-proxy ]);
 
   shell = pkgs.mkShell {
     inputsFrom = [ ];
     packages = with pkgs; [
-      free-proxy
+      pyEnv
     ];
 
     hardeningDisable = ["all"];
   };
 in {
-  inherit free-proxy shell;
+  inherit pyEnv shell;
 }
