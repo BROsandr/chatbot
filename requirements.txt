@@ -1,3 +1,4 @@
 free-proxy==1.1.1
 g4f[gui]==0.3.1.8
 aiohttp_socks==0.8.4
+nodriver==0.29rc2
