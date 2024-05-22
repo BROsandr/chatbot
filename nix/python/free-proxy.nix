@@ -26,6 +26,11 @@ buildPythonPackage rec {
     requests
   ];
 
+  pythonImportsCheck = [
+    "fp.fp.FreeProxy"
+  ];
+
+
   meta = with lib; {
     description = "Get free proxies";
     homepage = "https://https://github.com/jundymek/free-proxy";
